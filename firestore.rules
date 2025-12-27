@@ -1,0 +1,17 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Secure the user's movie collection
+    // Users can only read/write to their own folder based on their Authentication UID
+    match /users/{userId}/movies/{movieId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Default deny for everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
