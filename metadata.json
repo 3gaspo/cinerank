@@ -1,0 +1,5 @@
+{
+  "name": "CineRank",
+  "description": "An offline-first movie tracker that intelligently ranks your 'To Watch' list based on priority, release date, and freshness.",
+  "requestFramePermissions": []
+}
